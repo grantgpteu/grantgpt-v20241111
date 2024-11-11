@@ -29,7 +29,7 @@ jobs:
         sshpass -p "$SERVER_PASSWORD" scp -o StrictHostKeyChecking=no project.tar.gz $SERVER_USER@$SERVER_IP:/tmp/project.tar.gz
         sshpass -p "$SERVER_PASSWORD" ssh -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP << EOF
           
-          cd ~/bip/
+          cd ~/grantgpt/
           
           rm -r *
           mv /tmp/project.tar.gz project.tar.gz 
