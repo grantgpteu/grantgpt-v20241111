@@ -25,11 +25,11 @@ export default function LogoTypeContainer({
             <div>
               <HeaderTitle>{enterpriseSettings.application_name}</HeaderTitle>
               {!NEXT_PUBLIC_DO_NOT_USE_TOGGLE_OFF_DANSWER_POWERED && (
-                <p className="text-xs text-subtle">Powered by Onyx</p>
+                <p className="text-xs text-subtle">Powered by GrantGPT</p>
               )}
             </div>
           ) : (
-            <HeaderTitle>Onyx</HeaderTitle>
+            <HeaderTitle>GrantGPT</HeaderTitle>
           )}
         </div>
       )}

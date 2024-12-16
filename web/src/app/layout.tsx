@@ -42,8 +42,8 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 
   return {
-    title: enterpriseSettings?.application_name ?? "Onyx",
-    description: "Question answering for your documents",
+    title: enterpriseSettings?.application_name ?? "GrantGPT",
+    description: "Question answering for your grants",
     icons: {
       icon: logoLocation,
     },
@@ -115,14 +115,14 @@ export default async function RootLayout({
     return getPageContent(
       <div className="flex flex-col items-center justify-center min-h-screen">
         <div className="mb-2 flex items-center max-w-[175px]">
-          <HeaderTitle>Onyx</HeaderTitle>
+          <HeaderTitle>GrantGPT</HeaderTitle>
           <Logo height={40} width={40} />
         </div>
 
         <CardSection className="max-w-md">
           <h1 className="text-2xl font-bold mb-4 text-error">Error</h1>
           <p className="text-text-500">
-            Your Onyx instance was not configured properly and your settings
+            Your GrantGPT instance was not configured properly and your settings
             could not be loaded. This could be due to an admin configuration
             issue or an incomplete setup.
           </p>
@@ -136,7 +136,7 @@ export default async function RootLayout({
             >
               our docs
             </a>{" "}
-            to see how to configure Onyx properly. If you&apos;re a user, please
+            to see how to configure GrantGPT properly. If you&apos;re a user, please
             contact your admin to fix this error.
           </p>
           <p className="mt-4">
@@ -144,7 +144,7 @@ export default async function RootLayout({
             community on{" "}
             <a
               className="text-link"
-              href="https://onyx.app?utm_source=app&utm_medium=error_page&utm_campaign=config_error"
+              href="https://grantgpt.eu"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -160,7 +160,7 @@ export default async function RootLayout({
     return getPageContent(
       <div className="flex flex-col items-center justify-center min-h-screen">
         <div className="mb-2 flex items-center max-w-[175px]">
-          <HeaderTitle>Onyx</HeaderTitle>
+          <HeaderTitle>GrantGPT</HeaderTitle>
           <Logo height={40} width={40} />
         </div>
         <CardSection className="w-full max-w-md">
@@ -168,11 +168,11 @@ export default async function RootLayout({
             Access Restricted
           </h1>
           <p className="text-text-500 mb-4">
-            We regret to inform you that your access to Onyx has been
+            We regret to inform you that your access to GrantGPT has been
             temporarily suspended due to a lapse in your subscription.
           </p>
           <p className="text-text-500 mb-4">
-            To reinstate your access and continue benefiting from Onyx&apos;s
+            To reinstate your access and continue benefiting from GrantGPT&apos;s
             powerful features, please update your payment information.
           </p>
           <p className="text-text-500">

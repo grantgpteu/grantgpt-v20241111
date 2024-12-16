@@ -35,12 +35,12 @@ export default function FixedLogo({
                   {enterpriseSettings.application_name}
                 </HeaderTitle>
                 {!NEXT_PUBLIC_DO_NOT_USE_TOGGLE_OFF_DANSWER_POWERED && (
-                  <p className="text-xs text-subtle">Powered by Onyx</p>
+                  <p className="text-xs text-subtle">Powered by GrantGPT</p>
                 )}
               </div>
             ) : (
               <HeaderTitle backgroundToggled={backgroundToggled}>
-                Onyx
+                GrantGPT
               </HeaderTitle>
             )}
           </div>
