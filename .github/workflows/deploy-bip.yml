@@ -18,9 +18,9 @@ jobs:
 
     - name: Deploy to server
       env:
-        SERVER_USER: ${{ secrets.SERVER_USER }}
-        SERVER_IP: ${{ secrets.SERVER_IP }}
-        SERVER_PASSWORD: ${{ secrets.SERVER_PASSWORD }}
+        SERVER_USER: ${{ secrets.SERVER_USER_BIP }}
+        SERVER_IP: ${{ secrets.SERVER_IP_BIP }}
+        SERVER_PASSWORD: ${{ secrets.SERVER_PASSWORD_BIP }}
       run: |
         # Create a tarball of the project
         git archive --format=tar.gz -o project.tar.gz HEAD
