@@ -22,23 +22,24 @@ docker_compose_cmd() {
 COMPOSE_CMD=$(docker_compose_cmd)
 
 # Only add www to domain list if domain wasn't explicitly set as a subdomain
-if [[ ! $DOMAIN == www.* ]]; then
-    domains=("$DOMAIN" "www.$DOMAIN")
-else
-    domains=("$DOMAIN")
-fi
+#if [[ ! $DOMAIN == www.* ]]; then
+#    domains=("$DOMAIN" "www.$DOMAIN")
+#else
+#    domains=("$DOMAIN")
+#fi
+domains=("$DOMAIN")
 
 rsa_key_size=4096
 data_path="../data/certbot"
 email="$EMAIL" # Adding a valid address is strongly recommended
 staging=0 # Set to 1 if you're testing your setup to avoid hitting request limits
 
-if [ -d "$data_path" ]; then
-  read -p "Existing data found for $domains. Continue and replace existing certificate? (y/N) " decision
-  if [ "$decision" != "Y" ] && [ "$decision" != "y" ]; then
-    exit
-  fi
-fi
+#if [ -d "$data_path" ]; then
+#  read -p "Existing data found for $domains. Continue and replace existing certificate? (y/N) " decision
+#  if [ "$decision" != "Y" ] && [ "$decision" != "y" ]; then
+#    exit
+#  fi
+#fi
 
 
 if [ ! -e "$data_path/conf/options-ssl-nginx.conf" ] || [ ! -e "$data_path/conf/ssl-dhparams.pem" ]; then
@@ -52,7 +53,7 @@ fi
 echo "### Creating dummy certificate for $domains ..."
 path="/etc/letsencrypt/live/$domains"
 mkdir -p "$data_path/conf/live/$domains"
-$COMPOSE_CMD -f docker-compose.prod.yml run  --name onyx-stack --rm --entrypoint "\
+$COMPOSE_CMD -f docker-compose.prod.yml run  --name danswer-stack --rm --entrypoint "\
   openssl req -x509 -nodes -newkey rsa:$rsa_key_size -days 1\
     -keyout '$path/privkey.pem' \
     -out '$path/fullchain.pem' \
@@ -61,14 +62,14 @@ echo
 
 
 echo "### Starting nginx ..."
-$COMPOSE_CMD -f docker-compose.prod.yml -p onyx-stack up --force-recreate -d nginx
+$COMPOSE_CMD -f docker-compose.prod.yml -p danswer-stack up --force-recreate -d nginx
 echo
 
 echo "Waiting for nginx to be ready, this may take a minute..."
 while true; do
   # Use curl to send a request and capture the HTTP status code
   status_code=$(curl -o /dev/null -s -w "%{http_code}\n" "http://localhost/api/health")
-  
+
   # Check if the status code is 200
   if [ "$status_code" -eq 200 ]; then
     break  # Exit the loop
@@ -79,7 +80,7 @@ while true; do
 done
 
 echo "### Deleting dummy certificate for $domains ..."
-$COMPOSE_CMD -f docker-compose.prod.yml run  --name onyx-stack --rm --entrypoint "\
+$COMPOSE_CMD -f docker-compose.prod.yml run  --name danswer-stack --rm --entrypoint "\
   rm -Rf /etc/letsencrypt/live/$domains && \
   rm -Rf /etc/letsencrypt/archive/$domains && \
   rm -Rf /etc/letsencrypt/renewal/$domains.conf" certbot
@@ -102,7 +103,7 @@ esac
 # Enable staging mode if needed
 if [ $staging != "0" ]; then staging_arg="--staging"; fi
 
-$COMPOSE_CMD -f docker-compose.prod.yml run --name onyx-stack --rm --entrypoint "\
+$COMPOSE_CMD -f docker-compose.prod.yml run --name danswer-stack --rm --entrypoint "\
   certbot certonly --webroot -w /var/www/certbot \
     $staging_arg \
     $email_arg \
@@ -113,7 +114,7 @@ $COMPOSE_CMD -f docker-compose.prod.yml run --name onyx-stack --rm --entrypoint 
 echo
 
 echo "### Renaming certificate directory if needed ..."
-$COMPOSE_CMD -f docker-compose.prod.yml run --name onyx-stack --rm --entrypoint "\
+$COMPOSE_CMD -f docker-compose.prod.yml run --name danswer-stack --rm --entrypoint "\
   sh -c 'for domain in $domains; do \
     numbered_dir=\$(find /etc/letsencrypt/live -maxdepth 1 -type d -name \"\$domain-00*\" | sort -r | head -n1); \
     if [ -n \"\$numbered_dir\" ]; then \
@@ -122,4 +123,4 @@ $COMPOSE_CMD -f docker-compose.prod.yml run --name onyx-stack --rm --entrypoint 
   done'" certbot
 
 echo "### Reloading nginx ..."
-$COMPOSE_CMD -f docker-compose.prod.yml -p onyx-stack up --force-recreate -d
+$COMPOSE_CMD -f docker-compose.prod.yml -p danswer-stack up --force-recreate -d
