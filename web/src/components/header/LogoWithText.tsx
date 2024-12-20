@@ -74,10 +74,20 @@ export default function LogoWithText({
           showArrow ? "desktop:invisible" : "invisible"
         } break-words inline-block w-fit text-text-700 text-xl`}
       >
-        <LogoComponent
-          enterpriseSettings={enterpriseSettings!}
-          backgroundToggled={toggled}
-        />
+        <div className="max-w-[175px]">
+          {enterpriseSettings && enterpriseSettings.application_name ? (
+            <div className="w-full">
+              <HeaderTitle backgroundToggled={toggled}>
+                {enterpriseSettings.application_name}
+              </HeaderTitle>
+              {!NEXT_PUBLIC_DO_NOT_USE_TOGGLE_OFF_DANSWER_POWERED && (
+                <p className="text-xs text-subtle">Powered by GrantGPT</p>
+              )}
+            </div>
+          ) : (
+            <HeaderTitle backgroundToggled={toggled}>GrantGPT</HeaderTitle>
+          )}
+        </div>
       </div>
 
       {page == "chat" && !showArrow && (
