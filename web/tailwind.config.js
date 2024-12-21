@@ -12,4 +12,4 @@ const customThemes = process.env.NEXT_PUBLIC_THEME
   : null;
 
 /** @type {import('tailwindcss').Config} */
-module.exports = customThemes ? merge(baseThemes, customThemes) : baseThemes;
+module.exports = baseThemes; //customThemes ? merge(baseThemes, customThemes) : baseThemes;
