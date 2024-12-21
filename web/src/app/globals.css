@@ -48,7 +48,7 @@
     /* neutral-700, solid - Very dark gray */
     --text-800: #001489;
     /* neutral-800, solidDark - Nearly black */
-    --text-900: #111827;
+    --text-900: #001489;
     /* neutral-900 - Very dark, almost black */
     --text-950: #0a0a0a;
     /* solidDark - Nearly pure black */
@@ -73,7 +73,7 @@
     /* neutral-600 - Dark gray */
     --background-700: #404040;
     /* neutral-700 - Very dark gray */
-    --background-800: #262626;
+    --background-800: #001489;
     /* neutral-800 - Nearly black */
     --background-900: #001489;
     /* gray-900 - Very dark, almost black */

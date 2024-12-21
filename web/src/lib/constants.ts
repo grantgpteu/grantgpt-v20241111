@@ -38,7 +38,7 @@ export const LOGOUT_DISABLED =
 
 // Default sidebar open is true if the environment variable is not set
 export const NEXT_PUBLIC_DEFAULT_SIDEBAR_OPEN =
-  process.env.NEXT_PUBLIC_DEFAULT_SIDEBAR_OPEN?.toLowerCase() === "false"
+  process.env.NEXT_PUBLIC_DEFAULT_SIDEBAR_OPEN?.toLowerCase() === "true"
     ? false
     : true;
 

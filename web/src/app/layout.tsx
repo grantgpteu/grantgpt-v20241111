@@ -42,8 +42,8 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 
   return {
-    title: enterpriseSettings?.application_name ?? "Onyx",
-    description: "Question answering for your documents",
+    title: enterpriseSettings?.application_name ?? "GrantGPT",
+    description: "Matching you with the perfect Grants",
     icons: {
       icon: logoLocation,
     },
@@ -121,7 +121,7 @@ export default async function RootLayout({
         <CardSection className="max-w-md">
           <h1 className="text-2xl font-bold mb-4 text-error">Error</h1>
           <p className="text-text-500">
-            Your Onyx instance was not configured properly and your settings
+            Your GrantGPT instance was not configured properly and your settings
             could not be loaded. This could be due to an admin configuration
             issue, an incomplete setup, or backend services that may not be up
             and running yet.
@@ -136,7 +136,7 @@ export default async function RootLayout({
             >
               our docs
             </a>{" "}
-            to see how to configure Onyx properly. If you&apos;re a user, please
+            to see how to configure GrantGPT properly. If you&apos;re a user, please
             contact your admin to fix this error.
           </p>
           <p className="mt-4">
@@ -167,11 +167,11 @@ export default async function RootLayout({
             Access Restricted
           </h1>
           <p className="text-text-500 mb-4">
-            We regret to inform you that your access to Onyx has been
+            We regret to inform you that your access to GrantGPT has been
             temporarily suspended due to a lapse in your subscription.
           </p>
           <p className="text-text-500 mb-4">
-            To reinstate your access and continue benefiting from Onyx&apos;s
+            To reinstate your access and continue benefiting from GrantGPT&apos;s
             powerful features, please update your payment information.
           </p>
           <p className="text-text-500">
