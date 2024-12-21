@@ -81,6 +81,10 @@ module.exports = {
         "token-regex": "var(--token-regex)",
         "token-attr-name": "var(--token-attr-name)",
         "non-selectable": "var(--non-selectable)",
+        "bg-neutral-900": {
+          "--tw-bg-opacity": "1",
+          backgroundColor: "#001489",
+        },
 
         // background
         background: "var(--background)",
