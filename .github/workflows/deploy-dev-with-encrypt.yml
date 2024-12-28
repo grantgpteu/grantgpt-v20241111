@@ -1,9 +1,7 @@
-name: Deploy to Dev Server
+name: Deploy to Dev Server WIth Encrypt
 
 on:
   workflow_dispatch:
-  push:
-    branches: [ main ]
 
 jobs:
   deploy:
@@ -45,5 +43,6 @@ jobs:
           # Deploy
           docker compose -f docker-compose.prod.yml -p danswer-stack down
           docker compose -f docker-compose.prod.yml -p danswer-stack up -d --build --force-recreate
+          ./init-letsencrypt.sh
           
         EOF
