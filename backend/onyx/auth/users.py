@@ -266,9 +266,9 @@ class UserManager(UUIDIDMixin, BaseUserManager[User, uuid.UUID]):
 
     async def validate_password(self, password: str, _: schemas.UC | models.UP) -> None:
         # Validate password according to basic security guidelines
-        if len(password) < 12:
+        if len(password) < 8:
             raise exceptions.InvalidPasswordException(
-                reason="Password must be at least 12 characters long."
+                reason="Password must be at least 8 characters long."
             )
         if len(password) > 64:
             raise exceptions.InvalidPasswordException(
